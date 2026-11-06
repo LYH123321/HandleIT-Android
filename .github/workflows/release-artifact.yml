@@ -25,7 +25,7 @@ jobs:
           ls -la
           FILES=$(find . -type f \( -name "*.apk" -o -name "*.aab" \))
           echo "files: $FILES"
-          gh release create handleit-build-3 \
+          gh release create handleit-build-v3 -R LYH123321/HandleIT-Android \
             --title "HandleIT build 3 (assembleDebug)" \
             --notes "APK from run 42209458724, debug signed" \
-            $FILES || gh release upload handleit-build-3 $FILES --clobber
+            $FILES || gh release upload handleit-build-v3 -R LYH123321/HandleIT-Android $FILES --clobber
