@@ -23,7 +23,9 @@ jobs:
         run: |
           set -euxo pipefail
           ls -la
+          FILES=$(find . -type f \( -name "*.apk" -o -name "*.aab" \))
+          echo "files: $FILES"
           gh release create handleit-build-3 \
             --title "HandleIT build 3 (assembleDebug)" \
             --notes "APK from run 42209458724, debug signed" \
-            *.apk *.aab || gh release upload handleit-build-3 *.apk *.aab --clobber
+            $FILES || gh release upload handleit-build-3 $FILES --clobber
