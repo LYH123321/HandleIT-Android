@@ -202,7 +202,7 @@ jobs:
           echo "sdk.dir=$ANDROID_HOME" > local.properties
 
       - name: Configure APK signing keystore
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && secrets.HANDLEIT_KEYSTORE_BASE64 != ''
         shell: bash
         env:
           HANDLEIT_KEYSTORE_BASE64: ${{ secrets.HANDLEIT_KEYSTORE_BASE64 }}
